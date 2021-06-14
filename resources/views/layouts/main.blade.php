@@ -21,6 +21,7 @@
             @yield('HomeContent')
             @yield('ComicsContent')
             @yield('ShowContent')
+            @yield('ErrorContent')
 
         </main>
 
