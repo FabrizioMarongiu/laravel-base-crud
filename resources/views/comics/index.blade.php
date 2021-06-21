@@ -4,6 +4,14 @@
     <div class="container">
         <h1>Comics</h1>
 
+        @if (session('deleted'))
+            <div class="alert alert-success">
+                <strong>{{ session('deleted') }} </strong>
+
+                ELIMINATO
+            </div>            
+        @endif
+
         <table class="table">
             <thead>
                 <tr>
@@ -24,10 +32,15 @@
                             <a class="btn btn-success"href="{{ route('comics.show', $comic->id) }}">SHOW</a>
                         </td>
                         <td>
-                            <a class="btn btn-success"href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
+                            <a class="btn btn-warning"href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
                         </td>
                         <td>
-                            <a class="btn btn-success"href="{{ route('comics.destroy', $comic->id) }}">DELETE</a>
+                           <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <input class="btn btn-danger" type="submit" value="DELETE">
+                        </form>
                         </td>
                         
                     </tr>
@@ -35,7 +48,7 @@
             </tbody>
         </table>
 
-        {{ $comics->links() }}
+        {{-- {{ $comics->links() }} --}}
     </div>
 
 @endsection

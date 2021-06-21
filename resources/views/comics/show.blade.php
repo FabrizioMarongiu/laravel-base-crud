@@ -8,6 +8,7 @@
     <div class="mb-5">
         <span class="badge bg-primary"> {{ $comic->title }}</span>
         <span class="badge bg-primary"> {{ $comic->price }} €</span>
+        <a class="btn btn-warning" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
     </div>
     <div class="row">
         <div class="col-md-6">
